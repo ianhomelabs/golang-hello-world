@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  # Tambahkan resource lain jika diperlukan seperti configmap.yaml, secret.yaml, dll.
+
+# Placeholder image yang akan diupdate oleh GitHub Actions
+images:
+  - name: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
+    newName: asia-southeast1-docker.pkg.dev/elated-oxide-453805-h7/golang-hello-world/hello-world
+    newTag: github-sha  # Ini akan diganti oleh GitHub Actions dengan GITHUB_SHA
+
+# Opsional: tambahkan namespace jika deployment dalam namespace tertentu
+# namespace: attendance-system
+
+# Opsional: tambahkan common labels jika diperlukan
+commonLabels:
+  app: hello-world
+  environment: staging
