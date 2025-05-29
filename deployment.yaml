@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: golang-hello-world
   strategy:
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       labels:
