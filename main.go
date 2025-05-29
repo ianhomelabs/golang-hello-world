@@ -13,5 +13,9 @@ func main() {
         return c.String(http.StatusOK, "Hello, World! From Echo! Deployed on GKE!")
     })
 
+    e.GET("/health", func(c echo.Context) error {
+        return c.String(http.StatusOK, "healthy")
+    })
+
     e.Logger.Fatal(e.Start(":8080"))
 }
